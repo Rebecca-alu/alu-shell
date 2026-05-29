@@ -1,2 +1,6 @@
 #!/bin/bash
-grep ^[[:alpha:]] /etc/ssh/sshd_config
+cat /etc/ssh/sshd_config | while read line; do
+  case "$line" in
+    [a-zA-Z]*) echo "$line" ;;
+  esac
+done
