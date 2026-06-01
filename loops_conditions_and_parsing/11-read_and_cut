@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# This script displays username, user id, and home directory from /etc/passwd
-while IFS=: read -r username password _  uid _ _  home _; do
+# This script reads /etc/passwd and displays user, uid, and home dir
+
+# Use IFS to split the line by colon
+while IFS=: read -r username password uid gid info home shell; do
+    # Ensure all variables are quoted to satisfy ShellCheck
     echo "$username:$uid:$home"
 done < /etc/passwd
